@@ -1,4 +1,5 @@
 # Project03_46W38
+This is the third and final programming project for the 46W38 course.
 This is the third (final) programming project of 46W38 course. The final project 
 chosen is WRA based on reanalysis data. 
 The project objective is to develop a Python Module for Wind Resource Assessment 
@@ -10,7 +11,7 @@ the following diagram (under construction yet):
    ```
    Project03_46W38
    ├── inputs/
-   │   ├── wind data in multiple NetCDF4 files provided (1997-2008)
+   │   ├── Wind data consisting in multiple NetCDF4 files from period 1997-2008
    │   ├── NREL 5MW wind turbine reference power curve provided
    │   ├── NREL 15MW wind turbine reference power curve provided
    ├── outputs/
@@ -22,8 +23,8 @@ the following diagram (under construction yet):
    │   └── functions_module
    │   └── __init__.py
    ├── tests/
-   │   └── functions_module functions complete tests 
-   │   └── main test
+   │   └── Tests for functions in the functions_module
+   │   └── Test for main script
    ├── examples/
    │   └── main.py (will run in evaluation)
    ├── .gitignore
