@@ -10,19 +10,22 @@ the following diagram (under construction yet):
    ```
    Project03_46W38
    ├── inputs/
-   │   ├── to be completed
-   │   ├── NREL 5MW wind turbine reference power curve
-   │   ├── NREL 15MW wind turbine reference power curve 
+   │   ├── wind data in multiple NetCDF4 files provided (1997-2008)
+   │   ├── NREL 5MW wind turbine reference power curve provided
+   │   ├── NREL 15MW wind turbine reference power curve provided
    ├── outputs/
-   │   └── to be completed
+   │   └── wind roses and wind speed distributions (yearly sorted)
+   │   └── AEP summary calculation results for the data period provided (1997-2008)
+   │   └── initial plotting results (will delete later)
    ├── src/
    │   ├── main.py 
    │   └── functions_module
    │   └── __init__.py
    ├── tests/
-   │   └── to be completed
+   │   └── functions_module functions complete tests 
+   │   └── main test
    ├── examples/
-   │   ├── main.py (will run in evaluation)
+   │   └── main.py (will run in evaluation)
    ├── .gitignore
    ├── LICENSE
    ├── README.md
