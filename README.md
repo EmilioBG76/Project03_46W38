@@ -6,7 +6,7 @@ The project objective is to develop a Python Module for Wind Resource Assessment
 at a specified site using ERA5 reanalysis data. Analyze multi-year hourly wind 
 data to estimate key wind energy metrics.
 
-1. My final project have the following structure including required files as shown 
+My final project have the following structure including required files as shown 
 in the following diagram (under construction yet):
    ```
    Project03_46W38
@@ -26,7 +26,8 @@ in the following diagram (under construction yet):
    │   ├──  Tests for functions in the functions_module
    │   └── Test for main script
    ├── examples/
-   │   └── main.py (will run in evaluation)
+   │   ├── main.py (will run in evaluation)
+   │   └── functions_module.py containing all the necessary functions to run main.py
    ├── .gitignore
    ├── LICENSE
    ├── README.md
