@@ -6,24 +6,24 @@ The project objective is to develop a Python Module for Wind Resource Assessment
 at a specified site using ERA5 reanalysis data. Analyze multi-year hourly wind 
 data to estimate key wind energy metrics.
 
-1. My final project have the following structure including required files as shown in 
-the following diagram (under construction yet):
+1. My final project have the following structure including required files as shown 
+in the following diagram (under construction yet):
    ```
    Project03_46W38
    ├── inputs/
    │   ├── Wind data consisting in multiple NetCDF4 files from period 1997-2008
    │   ├── NREL 5MW wind turbine reference power curve provided
-   │   ├── NREL 15MW wind turbine reference power curve provided
+   │   └── NREL 15MW wind turbine reference power curve provided
    ├── outputs/
-   │   └── wind roses and wind speed distributions (yearly sorted)
-   │   └── AEP summary calculation results for the data period provided (1997-2008)
+   │   ├── wind roses and wind speed distributions (yearly sorted)
+   │   ├──  AEP summary calculation results for the data period provided (1997-2008)
    │   └── initial plotting results (will delete later)
    ├── src/
    │   ├── main.py 
-   │   └── functions_module
+   │   ├── functions_module
    │   └── __init__.py
    ├── tests/
-   │   └── Tests for functions in the functions_module
+   │   ├──  Tests for functions in the functions_module
    │   └── Test for main script
    ├── examples/
    │   └── main.py (will run in evaluation)
