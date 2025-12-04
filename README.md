@@ -34,3 +34,25 @@ in the following diagram (under construction yet):
    ├── environment yml file to be completed  
    └── to be completed
    ```
+The `main.py` script inside the `examples` folder demonstrates, in a
+clear and structured manner, how the required functions are called and 
+executed.
+The `functions_module.py` script contains all the functions definition.
+
+## Package Overview (UNDER CONSTRUCTION)
+* My package contains main.py and functions_module.py scripts
+* A description of the class(es) you have implemented in your package, with
+clear reference to the file name of the code inside `src`.
+
+## Module/Package Architecture (UNDER CONSTRUCTION)
+A description of the module/package architecture, with **at least one diagram**. 
+
+## Installation Instructions (UNDER CONSTRUCTION)
+* (Optional) Installation instructions if you have packaged your code.
+
+## Other (UNDER CONSTRUCTION)
+* Test coverage of the module/package should be higher than 70%, as evaluated using
+`pytest-cov` on the `src` folder, by running:
+   ```
+   pytest --cov=src tests/
+   ```
