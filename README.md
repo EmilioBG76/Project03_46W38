@@ -30,6 +30,6 @@ the following diagram (under construction yet):
    ├── LICENSE
    ├── README.md
    ├── pyproject03_46w38.toml
-   ├── to be completed  
+   ├── environment yml file to be completed  
    └── to be completed
    ```
