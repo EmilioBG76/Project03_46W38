@@ -10,8 +10,9 @@ import shutil # For cleaning up temporary directories
 sys.path.insert(0, '/Users/cinnamon/Downloads/Project03_46W38/src')
 import functions_module
 from functions_module import WindDataLoader
-
+# Test loading data for a specific year
 @pytest.fixture(scope="module")
+# Define a fixture to set up temporary netCDF files for testing
 def setup_dummy_netcdf_files():
     temp_dir = '/Users/cinnamon/Downloads/Project03_46W38/tmp/test_winddataloader_years'
     os.makedirs(temp_dir, exist_ok=True)
@@ -50,7 +51,7 @@ def setup_dummy_netcdf_files():
 
     # Cleanup: remove the temporary directory and its contents
     shutil.rmtree(temp_dir)
-
+# Define the test function for loading data for a single year
 def test_load_data_for_single_year(setup_dummy_netcdf_files):
     temp_dir = setup_dummy_netcdf_files
     data_loader = WindDataLoader(input_dir=temp_dir)
@@ -65,7 +66,7 @@ def test_load_data_for_single_year(setup_dummy_netcdf_files):
     # Check that only data for the target year is loaded
     assert len(loaded_ds['time']) == 1 # One time step per year in dummy files
     assert pd.to_datetime(str(loaded_ds['time'].dt.year.item())) == pd.to_datetime(str(target_year))
-
+# Define the test function for loading data for a year with no matching files
 def test_load_data_for_year_no_matching_file(setup_dummy_netcdf_files):
     temp_dir = setup_dummy_netcdf_files
     data_loader = WindDataLoader(input_dir=temp_dir)
@@ -74,7 +75,7 @@ def test_load_data_for_year_no_matching_file(setup_dummy_netcdf_files):
     loaded_ds = data_loader.load_data_for_year(target_year)
 
     assert loaded_ds is None
-
+# Define the test function for loading data when input directory does not exist
 def test_load_data_for_year_non_existent_input_dir():
     non_existent_dir = '/Users/cinnamon/Downloads/Project03_46W38/non/existent/input/dir_123'
     data_loader = WindDataLoader(input_dir=non_existent_dir)
