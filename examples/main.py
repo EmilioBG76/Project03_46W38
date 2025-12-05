@@ -28,25 +28,25 @@ def run_analysis():
     print(f"Starting wind resource analysis for {TARGET_LATITUDE}°N, {TARGET_LONGITUDE}°E at {TARGET_HEIGHT}m...")
     
     # Instantiate WindDataLoader and WindAnalysisPlotter
-    data_loader = WindDataLoader(input_dir=INPUT_DIR)
-    plotter = WindAnalysisPlotter(output_dir=OUTPUT_BASE_DIR)
+    data_loader = WindDataLoader(input_dir=INPUT_DIR)            # Load wind data from input directory
+    plotter = WindAnalysisPlotter(output_dir=OUTPUT_BASE_DIR)    # Initialize plotter with output directory
 
     # Create yearly output directories
-    plotter.create_yearly_directories(START_YEAR, END_YEAR)
+    plotter.create_yearly_directories(START_YEAR, END_YEAR)      # Create directories for each year
 
     aep_results = [] # To store AEP results for all years and turbines
 
     # Initialize turbine models once
-    nrel_5mw_turbine = NREL5MWWindTurbine(input_dir=INPUT_DIR)
-    nrel_15mw_turbine = NREL15MWWindTurbine(input_dir=INPUT_DIR)
+    nrel_5mw_turbine = NREL5MWWindTurbine(input_dir=INPUT_DIR)   # Initialize NREL 5 MW turbine model
+    nrel_15mw_turbine = NREL15MWWindTurbine(input_dir=INPUT_DIR) # Initialize NREL 15 MW turbine model
 # --- Loop through each year for analysis ---
-    for year in range(START_YEAR, END_YEAR + 1):
+    for year in range(START_YEAR, END_YEAR + 1):                 # Loop through each year from START_YEAR to END_YEAR
         print() # Add a blank line for readability
         print(f"--- Processing Year: {year} ---")
         # Load and parse multiple provided netCDF4 files for the current year
         print(f"Loading wind data for {year}...")
         # Load data only for the current year to ensure Weibull fit is specific to that year
-        combined_dataset_year = data_loader.load_data_for_year(year)
+        combined_dataset_year = data_loader.load_data_for_year(year) # Load data for the specific year
 
         if combined_dataset_year is None:
             print(f"Failed to load wind data for year {year}. Skipping AEP calculation for this year.")
