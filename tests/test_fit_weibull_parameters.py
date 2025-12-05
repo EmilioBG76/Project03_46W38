@@ -8,6 +8,7 @@ import os
 sys.path.insert(0, '/Users/cinnamon/Downloads/Project03_46W38/src')
 from functions_module import fit_weibull_parameters
 
+# Define test cases for fit_weibull_parameters function
 def test_known_distribution():
     # Test with a known wind speed distribution (e.g., synthetic data from a Weibull distribution)
     k_true = 2.5
@@ -22,7 +23,8 @@ def test_known_distribution():
     # Use a larger tolerance for fitted parameters due to estimation
     np.testing.assert_almost_equal(k_fitted, k_true, decimal=1)
     np.testing.assert_almost_equal(A_fitted, A_true, decimal=1)
-
+    
+# Define additional test cases to cover edge cases and typical scenarios
 def test_insufficient_data():
     # Test with an array containing very few data points (less than 2)
     wind_speeds_single = np.array([5.0])
