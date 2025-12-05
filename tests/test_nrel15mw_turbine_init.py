@@ -7,7 +7,7 @@ import pandas as pd
 sys.path.insert(0, '/Users/cinnamon/Downloads/Project03_46W38/src')
 
 from functions_module import NREL15MWWindTurbine
-
+# Define the test function for NREL15MWWindTurbine initialization
 def test_nrel15mw_turbine_initialization():
     input_dir = '/Users/cinnamon/Downloads/Project03_46W38/inputs/'
 
@@ -36,6 +36,6 @@ def test_nrel15mw_turbine_initialization():
     # Cut-out speed should be the last wind speed where power > 0, which is 25 m/s.
     # Rated power should be the maximum power, which is 15000 kW.
 
-    assert turbine.cut_in_speed == 4.0 # Corrected from 6.0 to 4.0
+    assert turbine.cut_in_speed == 4.0  
     assert turbine.cut_out_speed == 25.0
     assert turbine.rated_power == 15000.0
