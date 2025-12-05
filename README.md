@@ -36,16 +36,16 @@ in the following diagram:
    ├── environment yml file to be completed  
    └── to be completed
    ```
-The `main.py` script inside the `examples` folder demonstrates, in a
+where:
+- The `main.py` script inside the `examples` folder demonstrates, in a
 clear and structured manner, how the required functions are called and 
 executed.
-The `functions_module.py` script contains all the functions definition.
-The `inputs` directory contains all the input data files provided.
-The `outputs` directory contains yearly sorted subfolders including wind direction 
-and wind speed distribution for a specific height. Besides a AEP summary file.
-The `src` package includes `functions_module`,`main` and `__init__` files.
-The `tests` directory including all the test files fully detailed later in this file.
-The `examples` directory includes `functions_module.py` and `main.py` scripts.
+- The `functions_module.py` script contains all the functions definition.
+- The `inputs` directory contains all the input data files provided.
+- The `outputs` directory contains yearly sorted subfolders including wind direction and wind speed distribution for a specific height, besides a AEP summary file.
+- The `src` package includes `functions_module`,`main` and `__init__` python files.
+- The `tests` directory including all the test files fully detailed later in this file.
+- The `examples` directory includes `functions_module.py` and `main.py` scripts.
 
 ## Package Overview (UNDER CONSTRUCTION)
 * My package contains main.py and functions_module.py scripts
@@ -57,15 +57,13 @@ includes attributes and methods.
 - NREL5MWWindTurbine and NREL15MWWindTurbine: both represent a specific type of 
 wind turbine, NREL 5MW and 15MW reference wind turbines. Includes functionalities, 
 attributes and wind turbine characteristics.
-- WindResource: Works with the wind conditions at a specific location, taking raw
+- WindResource: works with the wind conditions at a specific location, taking raw
 wind data and provides wind speed and direction for a chosen height. In addition 
 fit Weibull distribution. Enables interpolation and vertical extrapolation needed. 
 Also includes attributes and methods. 
-- WindDataLoader:  Necessary for data management, reading and organizing netCDF4 
-files for a specific year. Providing all wind data for the chosen year. 
-Allows easy access and preparation to wind data provided&stored in netCDF4 format.
-Also includes attributes and methods.
-- WindAnalysisPlotter: Is the class for visualization of the wind data analized.
+- WindDataLoader: class necessary for data management, reading and organizing netCDF4 files for a specific year. Providing all wind data for the chosen year. 
+Allows easy access and preparation to wind data provided and stored in netCDF4 format. Also includes attributes and methods.
+- WindAnalysisPlotter: is the class for visualization of the wind data analized.
 Create folder structure for storing the results in a proper way. Generate the 
 output plotting obtained for wind speed distributions and wind roses too.
 Includes attributes and methods.
@@ -76,11 +74,11 @@ required WRA, doing the required tasks as I detail here:
 - Managing data: loading raw data provided in netCDF4 files for each provided year.
 - Analyzing wind behaviour: calculating wind speed and wind direction. Fitting
 Weibull distribution for each provided year.
-- Study wind turbines: Using provided NREL reference wind turbines data calculates
+- Study wind turbines: using provided NREL reference wind turbines data calculates
 AEP for every single year for the period provided (1997-2008).
-- Visualizing: Plotting wind speed distributions and wind roses at a specific 
+- Visualizing: plotting wind speed distributions and wind roses at a specific 
 height for every single year for the period provided (1997-2008).
-- Saving output data summary: Providing all AEP results in a csv file for every 
+- Saving output data summary: providing all AEP results in a csv file for every 
 single year for the period provided (1997-2008).
  
 ## Installation Instructions
@@ -93,52 +91,52 @@ It has been evaluated used, as indicated, `pytest-cov` on the `src` folder.
 It can be seen how I have created separated test files in order to fully check
 the `src/functions_module.py` and `src/main.py` scripts correct functioning.
 All the test stored in `tests/` directory are:
-- test_compute_wind_speed_direction: Verification of the 
+- test_compute_wind_speed_direction: verification of the 
 compute_wind _speed_direction_function which is found in `src/functions_module.py`. 
 Ensuring that this function converts properly u and v wind components into wind 
 speed and wind direction necessary for obtaining the correct results.
-- test_fit_weibull_parameters: Testing the fit_weibull_parameters function.
+- test_fit_weibull_parameters: testing the fit_weibull_parameters function.
 Ensuring this functions properly calculates Weibull parameters(A and k) taking 
 into account the provided wind speed data. It has been reviewed several scenarios 
 for that purpose.
-- test_wind_analysis_plotter_create_yearly_directories: Testing the 
+- test_wind_analysis_plotter_create_yearly_directories: testing the 
 create_yearly_directories method for the WindAnalysisPlotter class. 
 Ensuring that it creates properly the output directory sorted by subfolder years 
 (1997-2008).
-- test_wind_analysis_plotter_plot_speed_distribution: Validates the 
+- test_wind_analysis_plotter_plot_speed_distribution: validates the 
 plot_speed_distribution method for the WindAnalysisPlotter class. 
 Ensuring that this method generates and saves properly the required plots.
-- test_wind_analysis_plotter_plot_wind_rose: Testing the plot_wind_rose method 
+- test_wind_analysis_plotter_plot_wind_rose: testing the plot_wind_rose method 
 for the WindAnalysisPlotter class. Ensuring that wind roses are generated and 
 stored correctly.
-- test_wind_data_loader_load_data_for_year: Testing the load_data_for_year method 
+- test_wind_data_loader_load_data_for_year: testing the load_data_for_year method 
 for the WindDataLoader class. Ensuring this method loads and does filtering wind 
 data from raw data provided with netCDF4 files.
-- test_wind_data_loader_load_netcdf_file: Testing the _load_netcdf_file method 
+- test_wind_data_loader_load_netcdf_file: testing the _load_netcdf_file method 
 included in the WindDataLoader class. Ensuring that this method load properly netCDF 
 files into a xarray.Dataset. Taking into account that file can not exist too.
-- test_wind_resource_fit_weibull_distribution: Validating the fit_weibull_distribution 
+- test_wind_resource_fit_weibull_distribution: validating the fit_weibull_distribution 
 method included in the WindResource class. Ensuring wind data for a specific chosen 
 height is properly processed with Weibull parameters(A and k). Several scenarios 
 has been taken in consideration.
-- test_wind_resource_get_wind_data_at_height: Testing the get_wind_data_at_height 
+- test_wind_resource_get_wind_data_at_height: testing the get_wind_data_at_height 
 method included in the WindResource class. Verifying wind speed and wind direction 
-computation at several heights. Through use of linear interpolation and vertical 
+computation at several heights. through use of linear interpolation and vertical 
 extrapolation taking into account wind data available for 10meters and 100 meters.
-- test_wind_turbine_calculate_aep: Validating the calculate_aep method included 
+- test_wind_turbine_calculate_aep: validating the calculate_aep method included 
 in the WindTurbine, NREL5MWWindTurbine and NREL15MWWindTurbine classes. 
 Ensuring that AEP is properly calculated using Weibull parameters and turbine types. 
 Taking into account several scenarios too.
-- test_wind_turbine_get_power_output: Testing the get_power_output method included 
+- test_wind_turbine_get_power_output: testing the get_power_output method included 
 in the WindTurbine, NREL5MWWindTurbine and NREL15MWWindTurbine classes. Verifying 
 that the method calculates properly the power output. Several escenarios have been 
 taking in condideration.
-- test_wind_turbine_load_power_curve: Testing the internal _load_power_curve 
+- test_wind_turbine_load_power_curve: testing the internal _load_power_curve 
 method included in the WindTurbine class. Verifying that this method reads and 
 parses properly wind turbine power curve data. Ensuring that all the wind turbine's
 `power output characteristics are completely loaded. It has been taken into account 
 what to do when there are missing files.
-- test_main_script: And finally with this test I have validated the main.py script 
+- test_main_script: and finally with this test I have validated the main.py script 
 execution and funcionality. Ensuring all the Wind Resourse Analysis, this includes,
 data loading, processing, complete plotting and AEP calculation for each year is 
 run without errors providing reasonable results.
