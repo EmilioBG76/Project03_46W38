@@ -33,8 +33,8 @@ in the following diagram:
    ├── LICENSE
    ├── README.md
    ├── pyproject03_46w38.toml
-   ├── environment yml file to be completed  
-   └── to be completed
+   ├── env.yml file
+   └── final project report pdf file
    ```
 where:
 - The `main.py` script inside the `examples` folder demonstrates, in a
