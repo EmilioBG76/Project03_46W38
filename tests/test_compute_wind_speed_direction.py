@@ -3,9 +3,9 @@ import xarray as xr
 import sys
 
 # Add the path to functions_module.py to sys.path
-sys.path.insert(0, '/Users/cinnamon/Downloads/Project03_46W38/src/')
-import functions_module
+sys.path.insert(0, '/Users/cinnamon/Downloads/Project03_46W38/src')
 from functions_module import compute_wind_speed_direction
+
 # Test cases for compute_wind_speed_direction function
 def test_positive_uv_components():
     # Test case 1: Positive u and v components (Quadrant I)
@@ -13,6 +13,7 @@ def test_positive_uv_components():
     v = 4.0
     wind_speed, wind_direction = compute_wind_speed_direction(u, v)
     np.testing.assert_almost_equal(wind_speed, 5.0)
+    np.testing.assert_almost_equal(wind_direction, 216.8698976, decimal=5) # arctan2(3,4) is 36.87 deg from north to east, meteorological from is 180 + 36.87 = 216.87
     np.testing.assert_almost_equal(wind_direction, 216.8698976, decimal=5) # arctan2(3,4) is 36.87 deg from north to east, meteorological from is 180 + 36.87 = 216.87
 
 def test_negative_uv_components():
@@ -25,11 +26,14 @@ def test_negative_uv_components():
 
 def test_mixed_uv_components_quadrant_ii():
     # Test case 3: Mixed u and v components (Quadrant II: u negative, v positive)
+    # arctan2(-3,4) is -36.87 deg from north to west, meteorological from is 180 + (-36.87) = 143.13
     u = -3.0
     v = 4.0
     wind_speed, wind_direction = compute_wind_speed_direction(u, v)
     np.testing.assert_almost_equal(wind_speed, 5.0)
     np.testing.assert_almost_equal(wind_direction, 143.1301023, decimal=5) # arctan2(-3,4) is -36.87 deg from north to west, meteorological from is 180 + (-36.87) = 143.13
+    # Test case 4: Mixed u and v components (Quadrant IV: u positive, v negative)
+    # arctan2(3,-4) is 143.13 deg from north to west, meteorological from is 180 + 143.13 = 323.13 
 
 def test_mixed_uv_components_quadrant_iv():
     # Test case 4: Mixed u and v components (Quadrant IV: u positive, v negative)
