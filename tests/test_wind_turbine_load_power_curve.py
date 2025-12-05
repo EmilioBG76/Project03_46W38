@@ -5,9 +5,10 @@ import pandas as pd
 
 # Add the path to functions_module.py to sys.path
 sys.path.insert(0, '/Users/cinnamon/Downloads/Project03_46W38/src')
-
+import functions_module
 from functions_module import WindTurbine
 
+# Define test loading of power curve in WindTurbine
 def test_load_power_curve_success():
     # Use an existing dummy power curve file for testing
     input_dir = '/Users/cinnamon/Downloads/Project03_46W38/inputs/'
@@ -24,7 +25,7 @@ def test_load_power_curve_success():
     assert turbine.cut_in_speed is not None
     assert turbine.cut_out_speed is not None
     assert turbine.rated_power is not None
-
+# Define test loading of power curve with non-existent file
 def test_load_power_curve_file_not_found():
     # Use a non-existent power curve file for testing FileNotFoundError
     input_dir = '/Users/cinnamon/Downloads/Project03_46W38/inputs/'
