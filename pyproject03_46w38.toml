@@ -5,12 +5,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "wra-based-on-reanalysis-data"
-version = "1.0.0"
+dynamic = ["version"]
 author = [
   { name="Emilio Barrachina Gascó", email="emilio.barrachinagasco@iicv.es" },
 ]
+readme = {file = "README.md", content-type = "text/markdown"}
 description = "Project developing a Python package for WRA at a specified Horn 1 site using ERA5 reanalysis data."
-readme = "README.md"
 requires-python = ">=3.11"
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -28,12 +28,14 @@ dependencies = [
     "netcdf4"
 ]
 
+[project.urls]
+source = "https://github.com/EmilioBG76/Project03_46W38/"
+issues = "https://github.com/EmilioBG76/Project03_46W38/issues"
+documentation = "https://github.com/ju-feng-dk/46W38-2025-Projects/tree/main/Project_03/wind_resource_assessment"
+
 [project.optional-dependencies]
 test = ["pytest", "pytest-cov", "mypy", "flake8"]
 dev = ["black", "isort", "pre-commit"]
-
-[project.urls]
-"Homepage" = "https://github.com/EmilioBG76/Project03_46W38/"
 
 # The source code for the package and its submodules are located in the 'src' directory.
 # 'src/main.py' and 'src/functions_module.py'
