@@ -3,14 +3,15 @@ import numpy as np
 import os
 import sys
 import matplotlib.pyplot as plt
-import shutil
+import shutil # for directory cleanup
 
 # Add the path to functions_module.py to sys.path
 sys.path.insert(0, '/Users/cinnamon/Downloads/Project03_46W38/src')
 
 from functions_module import WindAnalysisPlotter
-
+# Test for WindAnalysisPlotter's plot_wind_rose method
 @pytest.fixture(scope="function")
+# Define a fixture to set up and tear down the WindAnalysisPlotter instance and output directory
 def setup_plotter_and_output_dir():
     temp_output_dir = '/Users/cinnamon/Downloads/Project03_46W38/tmp/test_plot_wind_rose_output'
     # Ensure the directory is clean before each test
@@ -24,7 +25,7 @@ def setup_plotter_and_output_dir():
     # Cleanup after the test
     if os.path.exists(temp_output_dir):
         shutil.rmtree(temp_output_dir)
-
+# Define the actual test function for wind rose plotting
 def test_plot_wind_rose_creation(setup_plotter_and_output_dir):
     plotter, temp_output_dir = setup_plotter_and_output_dir
 
