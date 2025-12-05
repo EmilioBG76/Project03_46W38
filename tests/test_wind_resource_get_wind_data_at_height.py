@@ -9,8 +9,9 @@ import pandas as pd # Added import for pandas
 sys.path.insert(0, '/Users/cinnamon/Downloads/Project03_46W38/src')
 
 from functions_module import WindResource, compute_wind_speed_direction
-
+# Fixture to create a WindResource instance with dummy data
 @pytest.fixture
+# Define a fixture to set up WindResource with dummy data
 def setup_wind_resource():
     # Dummy data for a single time point, 2x2 spatial grid
     time_val = pd.to_datetime('2000-01-01T00:00:00')
@@ -53,7 +54,7 @@ def setup_wind_resource():
     target_latitude = 55.75
     target_longitude = 7.75
     return WindResource(dummy_dataset, target_latitude, target_longitude)
-
+# Define test functions for get_wind_data_at_10m
 def test_get_wind_data_at_10m(setup_wind_resource):
     wind_resource = setup_wind_resource
     wind_speed, wind_direction = wind_resource.get_wind_data_at_height(10)
@@ -65,7 +66,7 @@ def test_get_wind_data_at_10m(setup_wind_resource):
 
     np.testing.assert_almost_equal(wind_speed.item(), expected_speed_10m.item(), decimal=5)
     np.testing.assert_almost_equal(wind_direction.item(), expected_dir_10m.item(), decimal=5)
-
+# Define test functions for get_wind_data_at_100m
 def test_get_wind_data_at_100m(setup_wind_resource):
     wind_resource = setup_wind_resource
     wind_speed, wind_direction = wind_resource.get_wind_data_at_height(100)
@@ -77,7 +78,7 @@ def test_get_wind_data_at_100m(setup_wind_resource):
 
     np.testing.assert_almost_equal(wind_speed.item(), expected_speed_100m.item(), decimal=5)
     np.testing.assert_almost_equal(wind_direction.item(), expected_dir_100m.item(), decimal=5)
-
+# Define test functions for get_wind_data_at intermediate height (e.g., 50m)
 def test_get_wind_data_between_10m_100m(setup_wind_resource):
     wind_resource = setup_wind_resource
     target_height = 50 # Example: 50m
@@ -97,7 +98,7 @@ def test_get_wind_data_between_10m_100m(setup_wind_resource):
 
     np.testing.assert_almost_equal(wind_speed.item(), expected_speed_50m.item(), decimal=5)
     np.testing.assert_almost_equal(wind_direction.item(), expected_dir_50m.item(), decimal=5)
-
+# Define test functions for get_wind_data_at height above 100m (e.g., 120m)
 def test_get_wind_data_above_100m_extrapolation(setup_wind_resource):
     wind_resource = setup_wind_resource
     target_height = 120 # Example: 120m
@@ -114,7 +115,7 @@ def test_get_wind_data_above_100m_extrapolation(setup_wind_resource):
 
     np.testing.assert_almost_equal(wind_speed.item(), expected_speed_120m.item(), decimal=5)
     np.testing.assert_almost_equal(wind_direction.item(), expected_dir_120m.item(), decimal=5)
-
+# Define test functions for get_wind_data_at zero wind speeds
 def test_get_wind_data_zero_wind():
     # Test with zero wind speeds at all levels
     time_val = pd.to_datetime('2000-01-01T00:00:00')
