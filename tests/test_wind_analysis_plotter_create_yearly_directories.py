@@ -8,7 +8,9 @@ sys.path.insert(0, '/Users/cinnamon/Downloads/Project03_46W38/src')
 
 from functions_module import WindAnalysisPlotter
 
+# Fixture to set up and tear down a temporary output directory for testing
 @pytest.fixture(scope="function")
+# Define the fixture function
 def setup_output_directory():
     temp_output_dir = '/Users/cinnamon/Downloads/Project03_46W38/tmp/test_output_yearly_dirs'
     # Ensure the directory is clean before each test
@@ -19,7 +21,7 @@ def setup_output_directory():
     # Clean up after the test
     if os.path.exists(temp_output_dir):
         shutil.rmtree(temp_output_dir)
-
+# Define test function for create_yearly_directories
 def test_create_yearly_directories(setup_output_directory):
     base_output_dir = setup_output_directory
     plotter = WindAnalysisPlotter(output_dir=base_output_dir)
