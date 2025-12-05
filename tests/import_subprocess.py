@@ -14,6 +14,7 @@ import subprocess
 #test_command = ['pytest', '/Users/cinnamon/Downloads/Project03_46W38/tests/test_wind_turbine_calculate_aep.py']
 #test_command = ['pytest', '/Users/cinnamon/Downloads/Project03_46W38/tests/test_wind_turbine_get_power_output.py']
 #test_command = ['pytest', '/Users/cinnamon/Downloads/Project03_46W38/tests/test_wind_turbine_load_power_curve.py']
+test_command = ['pytest', '/Users/cinnamon/Downloads/Project03_46W38/tests/test_main_script.py']
 process = subprocess.run(test_command, capture_output=True, text=True)
 
 print(process.stdout)
