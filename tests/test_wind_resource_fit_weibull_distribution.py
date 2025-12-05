@@ -8,7 +8,7 @@ import scipy.stats
 
 # Add the path to functions_module.py to sys.path
 sys.path.insert(0, '/Users/cinnamon/Downloads/Project03_46W38/src')
-
+import functions_module
 from functions_module import WindResource, compute_wind_speed_direction, fit_weibull_parameters
 
 @pytest.fixture
