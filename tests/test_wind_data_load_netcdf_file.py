@@ -9,8 +9,9 @@ import pandas as pd
 sys.path.insert(0, '/Users/cinnamon/Downloads/Project03_46W38/src')
 import functions_module
 from functions_module import WindDataLoader
-
+# Fixture to set up and tear down test environment
 @pytest.fixture(scope="module")
+# Define a fixture to create and clean up a dummy netCDF file
 def setup_dummy_netcdf_file():
     # Create a temporary directory for the dummy file
     temp_dir = '/Users/cinnamon/Downloads/Project03_46W38/tmp/test_winddataloader'
@@ -34,7 +35,7 @@ def setup_dummy_netcdf_file():
     # Cleanup: remove the dummy file and directory
     os.remove(dummy_filepath)
     os.rmdir(temp_dir)
-
+# Test function for successful loading of a netCDF file
 def test_load_netcdf_file_success(setup_dummy_netcdf_file):
     dummy_filepath = setup_dummy_netcdf_file
     data_loader = WindDataLoader()
@@ -47,7 +48,7 @@ def test_load_netcdf_file_success(setup_dummy_netcdf_file):
     assert 'v10' in loaded_ds
     # Correctly assert that the dataset is not empty by checking if it has data variables
     assert len(loaded_ds.data_vars) > 0
-
+# Test function for handling file not found error
 def test_load_netcdf_file_not_found():
     data_loader = WindDataLoader()
     non_existent_filepath = '/Users/cinnamon/Downloads/Project03_46W38/non/existent/path/to/file.nc'
