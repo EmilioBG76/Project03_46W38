@@ -42,12 +42,13 @@ clear and structured manner, how the required functions are called and
 executed.
 - The `functions_module.py` script contains all the functions definition.
 - The `inputs` directory contains all the input data files provided.
-- The `outputs` directory contains yearly sorted subfolders including wind direction and wind speed distribution for a specific height, besides a AEP summary file.
+- The `outputs` directory contains yearly sorted subfolders including wind 
+direction and wind speed distribution for a specific height, besides a AEP summary file.
 - The `src` package includes `functions_module`,`main` and `__init__` python files.
 - The `tests` directory including all the test files fully detailed later in this file.
 - The `examples` directory includes `functions_module.py` and `main.py` scripts.
 
-## Package Overview (UNDER CONSTRUCTION)
+## Package Overview
 * My package contains main.py and functions_module.py scripts
 
 1.- The classes defined in `src/functions_module.py` are:
@@ -61,8 +62,10 @@ attributes and wind turbine characteristics.
 wind data and provides wind speed and direction for a chosen height. In addition 
 fit Weibull distribution. Enables interpolation and vertical extrapolation needed. 
 Also includes attributes and methods. 
-- WindDataLoader: class necessary for data management, reading and organizing netCDF4 files for a specific year. Providing all wind data for the chosen year. 
-Allows easy access and preparation to wind data provided and stored in netCDF4 format. Also includes attributes and methods.
+- WindDataLoader: class necessary for data management, reading and organizing 
+netCDF4 files for a specific year. Providing all wind data for the chosen year. 
+Allows easy access and preparation to wind data provided and stored in netCDF4 
+format. Also includes attributes and methods.
 - WindAnalysisPlotter: is the class for visualization of the wind data analized.
 Create folder structure for storing the results in a proper way. Generate the 
 output plotting obtained for wind speed distributions and wind roses too.
@@ -83,14 +86,15 @@ single year for the period provided (1997-2008).
  
 ## Installation Instructions
 * Not necessary specific intructions needed apart from using Github repository 
-and its directories created for this project.
+and its directories created for this project. My python package is included within
+`src` directory.
 
 ## Testing work developed
-* I have also tested coverage of the package and it is higher than 70%. 
+* I have also tested coverage of the package and it is higher than 70% as requested. 
 It has been evaluated used, as indicated, `pytest-cov` on the `src` folder.
-It can be seen how I have created separated test files in order to fully check
+It can be seen how I have created separated test files in order to fully check 
 the `src/functions_module.py` and `src/main.py` scripts correct functioning.
-All the test stored in `tests/` directory are:
+All the test python files stored in `tests` directory are the following:
 - test_compute_wind_speed_direction: verification of the 
 compute_wind _speed_direction_function which is found in `src/functions_module.py`. 
 Ensuring that this function converts properly u and v wind components into wind 
@@ -134,7 +138,7 @@ taking in condideration.
 - test_wind_turbine_load_power_curve: testing the internal _load_power_curve 
 method included in the WindTurbine class. Verifying that this method reads and 
 parses properly wind turbine power curve data. Ensuring that all the wind turbine's
-`power output characteristics are completely loaded. It has been taken into account 
+power output characteristics are completely loaded. It has been taken into account
 what to do when there are missing files.
 - test_main_script: and finally with this test I have validated the main.py script 
 execution and funcionality. Ensuring all the Wind Resourse Analysis, this includes,
