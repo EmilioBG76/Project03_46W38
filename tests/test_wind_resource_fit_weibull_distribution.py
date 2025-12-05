@@ -10,8 +10,9 @@ import scipy.stats
 sys.path.insert(0, '/Users/cinnamon/Downloads/Project03_46W38/src')
 import functions_module
 from functions_module import WindResource, compute_wind_speed_direction, fit_weibull_parameters
-
+# Fixture to create a WindResource instance with dummy data for Weibull fitting tests
 @pytest.fixture
+# Define a fixture to set up WindResource with dummy data
 def setup_wind_resource_for_weibull():
     # Create a dummy xarray.Dataset with multiple time steps for Weibull fitting
     num_time_steps = 1000 # Increased time steps for better fitting
@@ -44,7 +45,7 @@ def setup_wind_resource_for_weibull():
     target_latitude = 55.75
     target_longitude = 7.75
     return WindResource(dummy_dataset, target_latitude, target_longitude)
-
+# Define the test function to verify Weibull fitting
 def test_fit_weibull_parameters_at_target_height(setup_wind_resource_for_weibull):
     wind_resource = setup_wind_resource_for_weibull
     target_height = 90
@@ -67,7 +68,7 @@ def test_fit_weibull_parameters_at_target_height(setup_wind_resource_for_weibull
         np.testing.assert_almost_equal(A_fitted, A_expected, decimal=1)
     else:
         pytest.fail("Insufficient valid wind speed data points for fitting in fixture")
-
+# Define the test function to handle edge case with all zero wind speeds
 def test_fit_weibull_parameters_for_zero_wind_speeds():
     num_time_steps = 100
     time_coords = pd.date_range('2000-01-01', periods=num_time_steps, freq='h')
