@@ -15,7 +15,7 @@ from functions_module import WindResource, compute_wind_speed_direction, fit_wei
 def setup_wind_resource_for_weibull():
     # Create a dummy xarray.Dataset with multiple time steps for Weibull fitting
     num_time_steps = 1000 # Increased time steps for better fitting
-    time_coords = pd.date_range('2000-01-01', periods=num_time_steps, freq='H')
+    time_coords = pd.date_range('2000-01-01', periods=num_time_steps, freq='h')
     latitudes = np.array([55.5, 56.0])
     longitudes = np.array([7.5, 8.0])
 
@@ -70,7 +70,7 @@ def test_fit_weibull_parameters_at_target_height(setup_wind_resource_for_weibull
 
 def test_fit_weibull_parameters_for_zero_wind_speeds():
     num_time_steps = 100
-    time_coords = pd.date_range('2000-01-01', periods=num_time_steps, freq='H')
+    time_coords = pd.date_range('2000-01-01', periods=num_time_steps, freq='h')
     # Use a single point to represent the target location
     latitudes = np.array([55.75])
     longitudes = np.array([7.75])
@@ -93,10 +93,11 @@ def test_fit_weibull_parameters_for_zero_wind_speeds():
 
     target_latitude = 55.75
     target_longitude = 7.75
-    wind_resource_zero = WindResource(dummy_dataset_zero_wind, target_latitude, target_longitude)
-    target_height = 90
+    with pytest.warns(RuntimeWarning): # Expect scipy RuntimeWarning
+        wind_resource_zero = WindResource(dummy_dataset_zero_wind, target_latitude, target_longitude)
+        target_height = 90
 
-    k, A = wind_resource_zero.fit_weibull_distribution(target_height)
+        k, A = wind_resource_zero.fit_weibull_distribution(target_height)
 
-    assert k is None
-    assert A is None
+        assert k is None
+        assert A is None
